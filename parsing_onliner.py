@@ -1,7 +1,4 @@
-import requests
 import utils
-
-
 
 
 def page_count(json_date):
@@ -21,7 +18,6 @@ def json_parse(json_date):
         print(address, room, price, link, date)
         arg = [address, room, price, link, date]
         utils.create_list(*arg)
-    utils.csv_file_writer(utils.LIST_OF_FLATS, 'onliner.csv')
 
 
 def run():
@@ -29,5 +25,6 @@ def run():
     json_date = utils.pares(url.format('/'))
     last_page = page_count(json_date)
 
-    for i in range(1, 3):
+    for i in range(1, last_page):
         json_parse(utils.pares(url.format('?page='+str(i))))
+    utils.csv_file_writer(utils.LIST_OF_FLATS, 'onliner.csv')

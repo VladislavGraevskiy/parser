@@ -19,10 +19,10 @@ def parse(url_contents):
             utils.create_list(address.strip(), rooms, price, link, date)
         except IndexError:
             continue
-        utils.csv_file_writer(utils.LIST_OF_FLATS,'names.csv')
 
 
 def run():
     num = int(page_count(utils.url_content("http://www.kvartirant.by/ads/flats/type/rent/"))[0])
     for d in range(num+1):
         parse(utils.url_content("http://www.kvartirant.by/ads/flats/type/rent/page/{}/".format(d)))
+    utils.csv_file_writer(utils.LIST_OF_FLATS, 'names.csv')
