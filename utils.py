@@ -1,6 +1,5 @@
 import csv
 from lxml import html
-
 import requests
 
 LIST_OF_FLATS = []
